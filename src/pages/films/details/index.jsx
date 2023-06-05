@@ -75,11 +75,13 @@ const FilmsDetails = () => {
   };
   const _handleSave = async () => {
     const newEpisode = { ...episode };
+    console.log("newEpisode", newEpisode);
     if (newEpisode.data) {
       newEpisode.data = newEpisode.data.filter(function (element) {
         return element.label !== "" && element.value !== "";
       });
     }
+    console.log("newEpisode", newEpisode);
     const confirmed = window.confirm("Bạn có chắc chắn về các thay đổi?");
     if (confirmed) {
       setLoading(true);
@@ -489,6 +491,12 @@ const FilmsDetails = () => {
                     <p style={{ marginRight: 10 }}>Link phim: </p>
                     <input
                       value={data?.episode.value}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        const newEpisode = { ...episode };
+                        newEpisode.value = value;
+                        setEpisode(newEpisode);
+                      }}
                       size={data?.episode?.value?.length}
                     />
                   </div>
