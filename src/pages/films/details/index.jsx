@@ -490,14 +490,14 @@ const FilmsDetails = () => {
                   >
                     <p style={{ marginRight: 10 }}>Link phim: </p>
                     <input
-                      value={data?.episode.value}
+                      value={episode.value}
                       onChange={(event) => {
                         const value = event.target.value;
                         const newEpisode = { ...episode };
                         newEpisode.value = value;
                         setEpisode(newEpisode);
                       }}
-                      size={data?.episode?.value?.length}
+                      size={episode?.value?.length}
                     />
                   </div>
                 ) : (
