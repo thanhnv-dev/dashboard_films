@@ -19,7 +19,9 @@ function App() {
     <Router>
       <div className="dashboard-container">
         {/* {getTokenLocal ? <SideBar menu={sidebar_menu} /> : null} */}
-        <SideBar menu={sidebar_menu} />
+        <RequireAuth>
+          <SideBar menu={sidebar_menu} />
+        </RequireAuth>
         <div className="dashboard-body">
           <Routes>
             <Route exact path="/" element={<LoginPage />} />
