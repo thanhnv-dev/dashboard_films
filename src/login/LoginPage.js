@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginPage.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { sendPost } from "../network/requests";
 
 const LoginPage = () => {
+  let location = useLocation();
+
+  const getTokenLocal = localStorage.getItem("token");
+
   const [email, setEmail] = useState("");
 
   const [loading, setLoading] = useState(false);
@@ -33,6 +37,12 @@ const LoginPage = () => {
       navigate("/films");
     }
   };
+
+  useEffect(() => {
+    if (getTokenLocal) {
+      navigate("/films");
+    }
+  }, []);
 
   return (
     <div className="login-page">
